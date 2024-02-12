@@ -33,6 +33,7 @@ Feature: Interview
             | website  |
             | google   |
             | facebook |
+            | twitter  |
 
     # The next two tests will target the website of your choice (github is recommended).
     # You can put the credentials used for your test in the configuration.ts file.
@@ -47,12 +48,18 @@ Feature: Interview
 
     # Task 3: Write and implement a test to check a successful login
     Scenario: My site - User successful login
-        Then Implement the test
+        Given the user opened my website
+        When the user opens the login form
+        And the user fills his username
+        And the user fills his password
+        And the user clicks on the login button
+        Then the dashboard page should be displayed
 
     # Task 4a: Create scenario to check the following behavior :
     # On the website https://www.luckygames.be/, when a LOGGED OFF user goes to the TOURNAMENTS page
     # there should be AT LEAST 1 tournament displayed on the CURRENT AND UPCOMING page
     #
+
     # Task 4b: Based on your previous scenario, create a scenario to check the following behavior:
     # On the website https://www.luckygames.be/, when a LOGGED OFF user goes to the TOURNAMENTS page
     # there should be AT LEAST 1 FINISHED tournament displayed on the FINISHED tournament page
@@ -61,8 +68,16 @@ Feature: Interview
     #   - On luckygames many element have a unique data-testid which can be used to easily identify them. Check "getByTestId"
     #   - Playwright doesn't allow visibility checks on locator which matches several elements
     #     Check the function ".nth()"
-    Scenario: Name of your scenario
-        Then Implement the test
+      Scenario Outline: Luckygames - Logged off user goes to tournament page
+        Given a logged off user navigates to luckygames
+        When the user goes to the tournament page
+        And the user clicks on the tab <tab>
+        Then there should be at least 1 tournament displayed
+     
+     Examples: 
+            | tab                    |
+            | Current and upcoming   |
+            | Finished               |
 
     # Task 5: Using "fetch" from "node-fetch", and this api endpoint:http://fakerestapi.azurewebsites.net/api/v1/Books
     # Get the list of books and return a string containing those information for each book:

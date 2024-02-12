@@ -3,5 +3,5 @@
 export const WEBSITE_INFORMATION = {
   USERNAME: "",
   PASSWORD: "",
-  URL: "",
+  URL: "https://github.com/",
 };

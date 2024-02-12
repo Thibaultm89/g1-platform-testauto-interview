@@ -10,12 +10,32 @@ export const createPageModel = (testController: ITestController) => {
   return {
     myWebSite: {
       home: {
-        loginButton: page.locator("CSS selector"),
+        loginButton: page.locator("css=a.HeaderMenu-link--sign-in"),
       },
       loginForm: {
-        usernameInput: page.locator("CSS selector"),
-        passwordInput: page.locator("CSS selector"),
+        usernameInput: page.locator("css=input#login_field"),
+        passwordInput: page.locator("css=input#password"),
+        singInButton: page.locator("css=input.js-sign-in-button")
       },
+      dashboard: {
+        dashboard: page.locator("css=h3[data-target=\"feed-container.feedTitle\"]")
+      }
     },
+
+    luckygames: {
+      cookies: {
+        accept: page.locator("button#didomi-notice-agree-button"),
+      },
+      header: {
+        tournament: page.locator("css=a[data-testid=\"topnav-tournaments\"]")
+      },
+      tab : {
+        activeTab: page.locator("css=a[data-testid=\"active-tournaments-link\"]"),
+        finishedTab: page.locator("css=a[data-testid=\"finished-tournaments-link\"]")
+      },
+      tournamentCard: {
+        card: page.locator("div[data-testid=\"tournament-card\"]")
+      }
+    }
   };
 };
